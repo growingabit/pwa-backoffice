@@ -1,0 +1,71 @@
+{
+  "name": "pwa-backoffice",
+  "version": "1.0.0",
+  "scripts": {
+    "clean": "npm cache verify && del-cli dist coverage",
+    "lint": "eslint src",
+    "webpack": "cross-env TS_NODE_FAST=true ./node_modules/.bin/webpack",
+    "webpack-dev-server": "cross-env TS_NODE_FAST=true ./node_modules/.bin/webpack-dev-server",
+    "build": "npm run clean && npm run webpack -- --progress --bail",
+    "build:prod": "cross-env NODE_ENV=production npm run build",
+    "build:staging": "cross-env NODE_ENV=staging npm run build",
+    "dev": "npm run clean && cross-env NODE_ENV=development npm run webpack-dev-server -- --inline --progress --watch --bail",
+    "dashboard": "npm run clean && cross-env NODE_ENV=dashboard webpack-dashboard -- webpack-dev-server --inline --progress --watch --bail"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/growingabit/pwa-backoffice.git"
+  },
+  "author": "Lorenzo Bugiani <lorenzo.bugiani@gmail.com>",
+  "contributors": [
+    {
+      "name": "Gianmarco Brescia",
+      "email": "gianmarcobrescia@gmail.com"
+    },
+    {
+      "name": "Lorenzo Bugiani",
+      "email": "lorenzo.bugiani@gmail.com",
+      "url": "https://www.linkedin.com/in/lorenzo-bugiani-2628373b"
+    }
+  ],
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/growingabit/pwa-backoffice/issues"
+  },
+  "homepage": "https://github.com/growingabit/pwa-backoffice#readme",
+  "devDependencies": {
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "del-cli": "^1.1.0",
+    "eslint": "^4.8.0",
+    "eslint-plugin-angular": "^3.1.1",
+    "expose-loader": "^0.7.3",
+    "extract-text-webpack-plugin": "^3.0.1",
+    "favicons-webpack-plugin": "0.0.7",
+    "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
+    "html-minifier": "^3.5.5",
+    "html-minifier-loader": "^1.4.0",
+    "html-webpack-plugin": "^2.30.1",
+    "image-webpack-loader": "^3.4.2",
+    "inquirer": "^3.3.0",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.6.0",
+    "webpack-angular-injector-plugin": "^1.0.0",
+    "webpack-dashboard": "^1.0.0-5",
+    "webpack-dev-server": "^2.9.1"
+  },
+  "dependencies": {
+    "angular": "^1.6.6",
+    "angular-auth0": "^2.0.0",
+    "angular-jwt": "^0.1.9",
+    "angular-resource": "^1.6.6",
+    "angular-ui-router": "^0.4.3",
+    "auth0-js": "^8.10.1"
+  }
+}

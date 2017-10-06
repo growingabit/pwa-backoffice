@@ -1,0 +1,32 @@
+{
+  "prod": {
+    "api": {
+      "baseUrl": "https://api.growbit.xyz/"
+    },
+    "auth0": {
+      "clientID": "aB4EbELMT7MHTwZRDv2ivV5TIFItysL6",
+      "domain": "growbit.auth0.com",
+      "callbackUrl" :"https://api.growbit.xyz/backoffice/index.html#/callback"
+    }
+  },
+  "staging": {
+    "api": {
+      "baseUrl": "https://growbit-0-dev.appspot.com/"
+    },
+    "auth0": {
+      "clientID": "32wl1L4tlptjPImhEvLIbrQSkwmAJx5s",
+      "domain": "growbit-development.eu.auth0.com",
+      "callbackUrl" : "https://growbit-0-dev.appspot.com/backoffice/index.html#/callback"
+    }
+  },
+  "dev": {
+    "api": {
+      "baseUrl": "https://localhost:8080/"
+    },
+    "auth0": {
+      "clientID": "32wl1L4tlptjPImhEvLIbrQSkwmAJx5s",
+      "domain": "growbit-development.eu.auth0.com",
+      "callbackUrl": "http://localhost:8080/backoffice/index.html#/callback"
+    }
+  }
+}

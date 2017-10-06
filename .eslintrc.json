@@ -1,0 +1,15 @@
+{
+    "extends": "plugin:angular/johnpapa",
+    "parserOptions": {
+        "ecmaVersion": 5,
+        "sourceType": "script"
+    },
+    "env": {
+        "browser": true
+    },
+    "rules": {
+        "indent": ["error", 2],
+        "linebreak-style": ["error", "unix"],
+        "angular/service-name": [2, "", {"oldBehavior":false}]
+    }
+}
