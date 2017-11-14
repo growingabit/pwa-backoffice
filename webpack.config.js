@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const AngularInjectorPlugin = require('webpack-angular-injector-plugin');
 const project = require('./package.json');
 
 const ENV = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() || 'development';
@@ -30,24 +29,11 @@ const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
     except: ['cb', '__webpack_require__'],
     screw_ie8 : true,
     keep_fnames: true
-  },
-  dead_code: true,
-  beautify: false,
-  unused: true,
-  comments: true,
-  compress: {
-    screw_ie8: true,
-    keep_fnames: true,
-    drop_debugger: true,
-    drop_console: false,
-    dead_code: true,
-    unused: true,
-    warnings: false
   }
 });
 
 const faviconPlugin = new FaviconsWebpackPlugin({
-  logo: 'favicon.ico',
+  logo: path.resolve(srcDir, 'favicon.png'),
   emitStats: true,
   statsFilename: 'iconstats-[hash].json',
   persistentCache: true,
@@ -61,8 +47,10 @@ const faviconPlugin = new FaviconsWebpackPlugin({
     coast: true,
     favicons: true,
     firefox: true,
-    windows: true,
-    yandex: true
+    opengraph: false,
+    twitter: true,
+    yandex: false,
+    windows: true
   }
 });
 
@@ -132,6 +120,18 @@ module.exports = {
         ]
       },
       {
+        test: /\.js$/,
+        use: [
+          {
+            loader: 'ng-annotate-loader',
+            options: {
+              add: true,
+              map: false
+            }
+          }
+        ]
+      },
+      {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
       },
@@ -180,7 +180,6 @@ module.exports = {
     new webpack.ProvidePlugin({
       auth0: 'auth0-js',
     }),
-    new AngularInjectorPlugin(),
     new ExtractTextPlugin({
       filename: '[name].[contenthash].css',
       disable: (DEV),
@@ -205,7 +204,7 @@ module.exports = {
       auth0CLientID: JSON.stringify(PROD ? appProperties.prod.auth0.clientID : (STAGING ? appProperties.staging.auth0.clientID : appProperties.dev.auth0.clientID)),
       auth0Domain: JSON.stringify(PROD ? appProperties.prod.auth0.domain : (STAGING ? appProperties.staging.auth0.domain : appProperties.dev.auth0.domain)),
       auth0CallbakUrl: JSON.stringify(PROD ? appProperties.prod.auth0.callbackUrl : (STAGING ? appProperties.staging.auth0.callbackUrl : appProperties.dev.auth0.callbackUrl)),
-      apiBaseUrl: JSON.stringify(PROD ? appProperties.prod.api.baseUrls : (STAGING ? appProperties.staging.api.baseUrl : appProperties.dev.api.baseUrl))
+      apiBaseUrl: JSON.stringify(PROD ? appProperties.prod.api.baseUrl : (STAGING ? appProperties.staging.api.baseUrl : appProperties.dev.api.baseUrl))
     }),
     ...when(DASHBOARD, new DashboardPlugin()),
     ...when(ONLINE, [faviconPlugin, uglifyPlugin])

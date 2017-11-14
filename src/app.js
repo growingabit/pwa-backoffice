@@ -10,7 +10,7 @@ require('angular-auth0');
 var app = angular.module('app', [ 'ui.router', 'ngResource', 'auth0.auth0', 'angular-jwt' ]);
 
 require('./services/Auth');
-require('./services/invitation');
+require('./services/Invitation');
 
 require('./components/callback/callback');
 require('./components/home/home');
