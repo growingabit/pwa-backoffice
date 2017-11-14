@@ -6,7 +6,7 @@
     "auth0": {
       "clientID": "aB4EbELMT7MHTwZRDv2ivV5TIFItysL6",
       "domain": "growbit.auth0.com",
-      "callbackUrl" :"https://api.growbit.xyz/backoffice/index.html#/callback"
+      "callbackUrl": "https://backoffice.growbit.xyz/index.html#/callback"
     }
   },
   "staging": {
@@ -16,12 +16,12 @@
     "auth0": {
       "clientID": "32wl1L4tlptjPImhEvLIbrQSkwmAJx5s",
       "domain": "growbit-development.eu.auth0.com",
-      "callbackUrl" : "https://growbit-0-dev.appspot.com/backoffice/index.html#/callback"
+      "callbackUrl": "https://backoffice.growbit.xyz/index.html#/callback"
     }
   },
   "dev": {
     "api": {
-      "baseUrl": "http://localhost:8080"
+      "baseUrl": "http://localhost:8082"
     },
     "auth0": {
       "clientID": "32wl1L4tlptjPImhEvLIbrQSkwmAJx5s",
